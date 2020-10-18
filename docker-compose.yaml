@@ -1,0 +1,29 @@
+version: '3.7'
+
+services:
+    stub-mountebank:
+        image: bomb0069/mountebank:with-curl
+        volumes: 
+            - ./input:/imposters
+        ports:
+            - 2526:2525
+            - 3091:3000
+        command: --configfile /imposters/todo-1.json --allowInjection --loglevel debug
+
+    stub-expected-pact:
+        image: pactfoundation/pact-stub-server:v0.4.2
+        volumes: 
+            - ./output/expected:/app/pacts
+        ports:
+            - 3092:3000
+        command: -p 3000 -d pacts
+
+    stub-actual-pact:
+        image: pactfoundation/pact-stub-server:v0.4.2
+        volumes: 
+            - ./output/actual:/app/pacts
+        ports:
+            - 3093:3000
+        command: -p 3000 -d pacts
+
+    
