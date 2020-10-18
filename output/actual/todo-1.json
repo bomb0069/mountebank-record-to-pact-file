@@ -1,0 +1,34 @@
+{
+  "consumer": {
+    "name": "Localhost"
+  },
+  "provider": {
+    "name": "jsonplaceholder"
+  },
+  "interactions": [
+    {
+      "description": "",
+      "request": {
+        "method": "GET",
+        "path": "/todos/1"
+      },
+      "response": {
+        "status": 0,
+        "headers": {
+          "Content-Type": ""
+        },
+        "body": {
+          "userId": 0,
+          "id": 0,
+          "title": "",
+          "completed": false
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": ""
+    }
+  }
+}

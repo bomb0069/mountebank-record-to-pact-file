@@ -1,3 +1,3 @@
-module github.com/bomb0069/mountebank-record-to-pact-file
+module converter
 
 go 1.15
