@@ -1,8 +1,16 @@
 package converter
 
+import "encoding/json"
+
 func (request *Request) FromMap(requestMap map[string]string) {
 	request.Method = requestMap["method"]
 	request.Path = requestMap["path"]
+
+	var requestBodyJson map[string]interface{}
+	json.Unmarshal([]byte(requestMap["body"]), &requestBodyJson)
+
+	request.Body = requestBodyJson
+
 }
 
 type Pact struct {
@@ -29,8 +37,9 @@ type Interaction struct {
 }
 
 type Request struct {
-	Method string `json:"method"`
-	Path   string `json:"path"`
+	Method string                 `json:"method"`
+	Path   string                 `json:"path"`
+	Body   map[string]interface{} `json:"body"`
 }
 
 type PactSpecification struct {
