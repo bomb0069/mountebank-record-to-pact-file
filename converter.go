@@ -40,11 +40,17 @@ func Convert(consumer string) {
 			interaction.Request.FromMap(stub.ToMap())
 
 			interaction.Response.Status = stub.Responses[0].Is.StatusCode
-			interaction.Response.Headers = stub.Responses[0].Is.Headers
+			interaction.Response.Headers = stub.Responses[0].Is.GetHeader("Content-Type")
+
+			var bodyJson map[string]interface{}
+			json.Unmarshal([]byte(stub.Responses[0].Is.Body), &bodyJson)
+
+			interaction.Response.Body = bodyJson
 
 			pact.Interactions = append(pact.Interactions, *interaction)
 		}
 	}
+	pact.Metadata.PactSpecification.Version = "2.0.0"
 
 	file, _ := json.MarshalIndent(pact, "", "  ")
 

@@ -15,6 +15,16 @@ func (stub Stub) ToMap() map[string]string {
 	return deepEqualsMap
 }
 
+func (is Is) GetHeader(filter string) map[string]string {
+	returnMap := make(map[string]string)
+	for key, element := range is.Headers {
+		if key == filter {
+			returnMap[key] = element
+		}
+	}
+	return returnMap
+}
+
 type Mountebank struct {
 	Imposters []Imposter `json:"imposters"`
 }
@@ -37,14 +47,16 @@ type Stub struct {
 		DeepEquals    map[string]string `json:"deepEquals"`
 	} `json:"predicates"`
 	Responses []struct {
-		Is struct {
-			StatusCode int               `json:"statusCode"`
-			Headers    map[string]string `json:"headers"`
-			Body       string            `json:"body"`
-			Mode       string            `json:"_mode"`
-		} `json:"is"`
+		Is        Is `json:"is"`
 		Behaviors struct {
 			Wait int `json:"wait"`
 		} `json:"_behaviors"`
 	} `json:"responses"`
+}
+
+type Is struct {
+	StatusCode int               `json:"statusCode"`
+	Headers    map[string]string `json:"headers"`
+	Body       string            `json:"body"`
+	Mode       string            `json:"_mode"`
 }

@@ -15,79 +15,20 @@
       "response": {
         "status": 200,
         "headers": {
-          "Accept-Ranges": "bytes",
-          "Access-Control-Allow-Credentials": "true",
-          "Age": "12039",
-          "CF-Cache-Status": "HIT",
-          "CF-RAY": "5e42c4a39d80c8db-BKK",
-          "Cache-Control": "max-age=43200",
-          "Connection": "close",
-          "Content-Length": "83",
-          "Content-Type": "application/json; charset=utf-8",
-          "Date": "Sun, 18 Oct 2020 13:57:23 GMT",
-          "Etag": "W/\"53-hfEnumeNh6YirfjyjaujcOPPT+s\"",
-          "Expect-CT": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
-          "Expires": "-1",
-          "NEL": "{\"report_to\":\"cf-nel\",\"max_age\":604800}",
-          "Pragma": "no-cache",
-          "Report-To": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report?lkg-colo=129\u0026lkg-time=1603029443\"}],\"group\":\"cf-nel\",\"max_age\":604800}",
-          "Server": "cloudflare",
-          "Set-Cookie": "__cfduid=dce185a4dca29b490eeed3cca73e6ebae1603029443; expires=Tue, 17-Nov-20 13:57:23 GMT; path=/; domain=.typicode.com; HttpOnly; SameSite=Lax",
-          "Vary": "Origin, Accept-Encoding",
-          "Via": "1.1 vegur",
-          "X-Content-Type-Options": "nosniff",
-          "X-Powered-By": "Express",
-          "X-Ratelimit-Limit": "1000",
-          "X-Ratelimit-Remaining": "999",
-          "X-Ratelimit-Reset": "1600340541",
-          "cf-request-id": "05dd993a410000c8db441d2000000001"
+          "Content-Type": "application/json; charset=utf-8"
         },
-        "body": "{ \"userId\": 1, \"id\": 1, \"title\": \"delectus aut autem\", \"completed\": false }"
-      }
-    },
-    {
-      "description": "",
-      "request": {
-        "method": "GET",
-        "path": "/todos/2"
-      },
-      "response": {
-        "status": 200,
-        "headers": {
-          "Accept-Ranges": "bytes",
-          "Access-Control-Allow-Credentials": "true",
-          "Age": "12039",
-          "CF-Cache-Status": "HIT",
-          "CF-RAY": "5e42c4a39d80c8db-BKK",
-          "Cache-Control": "max-age=43200",
-          "Connection": "close",
-          "Content-Length": "83",
-          "Content-Type": "application/json; charset=utf-8",
-          "Date": "Sun, 18 Oct 2020 13:57:23 GMT",
-          "Etag": "W/\"53-hfEnumeNh6YirfjyjaujcOPPT+s\"",
-          "Expect-CT": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
-          "Expires": "-1",
-          "NEL": "{\"report_to\":\"cf-nel\",\"max_age\":604800}",
-          "Pragma": "no-cache",
-          "Report-To": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report?lkg-colo=129\u0026lkg-time=1603029443\"}],\"group\":\"cf-nel\",\"max_age\":604800}",
-          "Server": "cloudflare",
-          "Set-Cookie": "__cfduid=dce185a4dca29b490eeed3cca73e6ebae1603029443; expires=Tue, 17-Nov-20 13:57:23 GMT; path=/; domain=.typicode.com; HttpOnly; SameSite=Lax",
-          "Vary": "Origin, Accept-Encoding",
-          "Via": "1.1 vegur",
-          "X-Content-Type-Options": "nosniff",
-          "X-Powered-By": "Express",
-          "X-Ratelimit-Limit": "1000",
-          "X-Ratelimit-Remaining": "999",
-          "X-Ratelimit-Reset": "1600340541",
-          "cf-request-id": "05dd993a410000c8db441d2000000001"
-        },
-        "body": "{ \"userId\": 1, \"id\": 1, \"title\": \"delectus aut autem\", \"completed\": false }"
+        "body": {
+          "completed": false,
+          "id": 1,
+          "title": "delectus aut autem",
+          "userId": 1
+        }
       }
     }
   ],
   "metadata": {
     "pactSpecification": {
-      "version": ""
+      "version": "2.0.0"
     }
   }
 }

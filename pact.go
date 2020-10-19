@@ -14,9 +14,7 @@ type Pact struct {
 	} `json:"provider"`
 	Interactions []Interaction `json:"interactions"`
 	Metadata     struct {
-		PactSpecification struct {
-			Version string `json:"version"`
-		} `json:"pactSpecification"`
+		PactSpecification PactSpecification `json:"pactSpecification"`
 	} `json:"metadata"`
 }
 
@@ -24,13 +22,17 @@ type Interaction struct {
 	Description string  `json:"description"`
 	Request     Request `json:"request"`
 	Response    struct {
-		Status  int               `json:"status"`
-		Headers map[string]string `json:"headers"`
-		Body    string            `json:"body"`
+		Status  int                    `json:"status"`
+		Headers map[string]string      `json:"headers"`
+		Body    map[string]interface{} `json:"body"`
 	} `json:"response"`
 }
 
 type Request struct {
 	Method string `json:"method"`
 	Path   string `json:"path"`
+}
+
+type PactSpecification struct {
+	Version string `json:"version"`
 }
