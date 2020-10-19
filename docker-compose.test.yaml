@@ -34,4 +34,37 @@ services:
         environment:
             pact_urls: /tmp/pacts/todo-1.json # If you have local Pacts
             provider_base_url: http://host.docker.internal:3093
-        
+
+    test-actual-runner-real:
+        image: dius/pact-provider-verifier-docker
+        volumes:
+            - ./output/actual:/tmp/pacts                 # If you have local Pacts
+        environment:
+            pact_urls: /tmp/pacts/todo-1.json # If you have local Pacts
+            provider_base_url: https://jsonplaceholder.typicode.com
+
+    test-actual-runner-mountebank:
+        image: dius/pact-provider-verifier-docker
+        volumes:
+            - ./output/actual:/tmp/pacts                 # If you have local Pacts
+        environment:
+            pact_urls: /tmp/pacts/todo-1.json # If you have local Pacts
+            provider_base_url: http://host.docker.internal:3091
+
+    test-actual-runner-pact-expected:
+        image: dius/pact-provider-verifier-docker
+        volumes:
+            - ./output/actual:/tmp/pacts                 # If you have local Pacts
+        environment:
+            pact_urls: /tmp/pacts/todo-1.json # If you have local Pacts
+            provider_base_url: http://host.docker.internal:3092
+
+
+    test-actual-runner-pact-actual:
+        image: dius/pact-provider-verifier-docker
+        volumes:
+            - ./output/actual:/tmp/pacts                 # If you have local Pacts
+        environment:
+            pact_urls: /tmp/pacts/todo-1.json # If you have local Pacts
+            provider_base_url: http://host.docker.internal:3093
+                    
