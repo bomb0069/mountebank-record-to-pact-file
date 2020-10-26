@@ -40,7 +40,7 @@ func Convert(consumer string) {
 			interaction.Request.FromMap(stub.ToMap())
 
 			interaction.Response.Status = stub.Responses[0].Is.StatusCode
-			interaction.Response.Headers = stub.Responses[0].Is.GetHeader("Content-Type")
+			interaction.Response.Headers = stub.Responses[0].Is.GetHeaderFromList("Content-Type", "X-Job-Id", "X-Request-Id", "X-Roundtrip")
 
 			var bodyJson map[string]interface{}
 			json.Unmarshal([]byte(stub.Responses[0].Is.Body), &bodyJson)

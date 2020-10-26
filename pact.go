@@ -1,16 +1,31 @@
 package converter
 
-import "encoding/json"
+import (
+	"encoding/json"
+	"fmt"
+	"reflect"
+)
 
-func (request *Request) FromMap(requestMap map[string]string) {
-	request.Method = requestMap["method"]
-	request.Path = requestMap["path"]
+func (request *Request) FromMap(requestMap map[string]interface{}) {
+	request.Method = fmt.Sprintf("%v", requestMap["method"])
+	request.Path = fmt.Sprintf("%v", requestMap["path"])
 
 	var requestBodyJson map[string]interface{}
-	json.Unmarshal([]byte(requestMap["body"]), &requestBodyJson)
-
+	json.Unmarshal([]byte(fmt.Sprintf("%v", requestMap["body"])), &requestBodyJson)
 	request.Body = requestBodyJson
 
+	request.Headers = make(map[string]string)
+
+	fmt.Printf("request-header :------------------------: %v", requestMap["headers"])
+	fmt.Printf("request-header-type :------------------------: %v", reflect.TypeOf(requestMap["headers"]))
+	switch v := requestMap["headers"].(type) {
+	case map[string]interface{}:
+		for key, value := range v {
+			request.Headers[key] = fmt.Sprintf("%v", value)
+		}
+	default:
+		fmt.Printf("XXXXX %v", v)
+	}
 }
 
 type Pact struct {
@@ -37,9 +52,10 @@ type Interaction struct {
 }
 
 type Request struct {
-	Method string                 `json:"method"`
-	Path   string                 `json:"path"`
-	Body   map[string]interface{} `json:"body"`
+	Method  string                 `json:"method"`
+	Path    string                 `json:"path"`
+	Body    map[string]interface{} `json:"body"`
+	Headers map[string]string      `json:"headers"`
 }
 
 type PactSpecification struct {
